@@ -12,17 +12,20 @@ class Articles extends Component {
 
     state = {
         isEdit: false,
-        articles: []
+        articles: [],
+        showIcon: false
     }
-
-    // articles = [{
-    //     title: '2018开工大节',
-    //     author: 'grb',
-    //     content: `# 学会总结，不断提高自己`
-    // }]
 
     componentWillMount () {
       this.getArticles()
+    }
+
+    componentDidMount () {
+      setTimeout(() => {
+        this.setState({
+          showIcon: true
+        })
+      }, 2000)
     }
 
     mde = null
@@ -35,19 +38,23 @@ class Articles extends Component {
                   <List data={this.state.articles} renderItem={this.renderItem}/>: 
                   <MarkdownEditor ref={(mde) => {this.mde= mde}}/>
                }
-               <div className='addArticle' onClick={this.changeIsEdit}>
-                  {!this.state.isEdit ? <i class="fa fa-plus"></i> : <i class="fa fa-book"></i>}
-               </div>
+               {
+                  this.state.showIcon &&
+                  <div className='addArticle' onClick={this.changeIsEdit}>
+                      {!this.state.isEdit ? <i className="fa fa-plus"></i> : <i className="fa fa-book"></i>}
+                  </div>
+               }
             </div>
         )
     }
 
     renderItem = (item, index) => (
-        <div className='articleItem' key={index}>  
+        <div className='articleItem' key={index} onClick={this.showContent.bind(this, item)}> 
+            <i className='fa fa-close' onClick={(e) => {this.deleteActicle(e,index)}}></i> 
             <h1 className='articleItem__title'>{item.title}</h1>
             <h3 className='articleItem__author'>
               {item.summary}
-              <span className='continueIcon' onClick={this.showContent.bind(this, item)}>继续阅读...</span>
+              <span className='continueIcon'>继续阅读...</span>
             </h3>
         </div>
     )
@@ -83,6 +90,12 @@ class Articles extends Component {
       this.props.history.push({
         pathname: `/blog/detail/${item._id}`
       })
+    }
+
+    deleteActicle = async (e, index) => {
+      e.stopPropagation()
+      const result = await articleService.deleteArticle(this.state.articles[index]._id)
+      this.getArticles()
     }
 }
 

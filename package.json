@@ -51,6 +51,7 @@
     "react-dom": "^16.2.0",
     "react-markdown": "^3.2.0",
     "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.2.1",
     "require-dir": "^1.0.0",
     "simplemde": "^1.11.2",
     "style-loader": "0.19.0",
@@ -110,7 +111,8 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:3000"
+      "changeOrigin": true,
+      "target": "http://gt0.top"
     }
   }
 }

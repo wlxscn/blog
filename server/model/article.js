@@ -31,6 +31,14 @@ class ArticleDao {
       console.log(article)
       return article
     }
+
+    async deleteArticle(id) {
+      await Article.deleteOne({_id:id});
+    }
+
+    async update(id, article) {
+      await Article.findByIdAndUpdate(id, article)
+    }
 }
 
 module.exports = new ArticleDao()

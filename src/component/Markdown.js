@@ -6,9 +6,14 @@ import 'simplemde/dist/simplemde.min.css'
 import {marked} from '../utils'
 
 class Markdown extends Component {
-    state = {
-      title: '',
-      summary: ''
+    constructor (props) {
+      super(props) 
+      let {article={}} = props
+      this.state = {
+        title: article.title || '',
+        summary: article.summary || '',
+        content: article.content || ''
+      }
     }
 
     smde = null
@@ -17,7 +22,7 @@ class Markdown extends Component {
       this.smde = new SimpleMDE({
         autoDownloadFontAwesome:false,
         element: document.getElementById('editor'),
-        previewRender: function(plainText) {
+        previewRender(plainText) {
           return marked(plainText); // Returns HTML from a custom parser
         },
         spellChecker:false
@@ -36,7 +41,7 @@ class Markdown extends Component {
                   <label>概述</label>
                   <input value={this.state.summary} onChange={this.setSummary}/>
                 </div>
-                <textarea id='editor'/>
+                <textarea id='editor' value={this.state.content} onChange={this.setContent}/>
               </div>  
             </div>
         )
@@ -51,6 +56,12 @@ class Markdown extends Component {
     setSummary = (e) => {
       this.setState({
         summary: e.target.value
+      })
+    }
+
+    setContent = (e) => {
+      this.setState({
+        content: e.target.value
       })
     }
 }

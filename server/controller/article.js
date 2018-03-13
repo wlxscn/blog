@@ -1,9 +1,8 @@
 const ArticleModel = require('../model/article')
 const article = async (router) => {
-  router.post('/create', (ctx) => {
-    console.log(ctx)
+  router.post('/article/create', async(ctx) => {
     const {content, title, summary} = ctx.request.body
-    ArticleModel.save({content, title, summary})
+    await ArticleModel.save({content, title, summary})
     ctx.body = 'success'
   })
   .get('/article', async (ctx) => {
@@ -21,6 +20,16 @@ const article = async (router) => {
       article
     }
   })
+  .put('/article/update', async (ctx) => {
+    const {content, title, summary,id} = ctx.request.body
+    await ArticleModel.update(id, {content, title, summary})
+    ctx.body = 'success'
+  })
+  .delete('/article/:id', async (ctx) => {
+    await ArticleModel.deleteArticle(ctx.params.id)
+    ctx.body = 'success'
+  })
+  
 }
 
 module.exports = article
