@@ -1,0 +1,78 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+#root {
+  height: 100%; }
+
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+.App-header {
+  text-align: left;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  padding-left: 30px;
+  height: 68px;
+  flex-shrink: 0; }
+
+.App-content {
+  flex: 1;
+  margin: 0 100px;
+  background: #fafafa;
+  overflow: hidden; }
+
+.fade-enter {
+  transform: translateX(-100%); }
+
+.fade-enter.fade-enter-active {
+  transform: translateX(0);
+  transition: all .5s ease; }
+
+.fade-appear {
+  transform: translateX(-100%); }
+
+.fade-appear.fade-appear-active {
+  transform: translateX(0);
+  transition: all .5s ease; }
+
+.fade-exit {
+  transform: translateX(0); }
+
+.fade-exit.fade-exit-active {
+  transform: translateX(100%);
+  transition: all .5s ease; }
+
+.navContainer {
+  line-height: 67px;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-end; }
+  .navContainer .navTab {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 30px; }
+  .navContainer .navTab a {
+    text-decoration: none;
+    color: #333; }
+  .navContainer .navTab a.active {
+    border-bottom: 3px solid #009a61; }
+
+.personContainer {
+  display: flex;
+  align-items: center; }
+
+.logoContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url(dd012ac20e3b6822cdcb974cb8f366ef.jpeg) center center;
+  background-size: 40px 40px;
+  margin-right: 10px; }
+

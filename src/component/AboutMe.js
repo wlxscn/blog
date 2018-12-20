@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './AboutMe.css'
-
+// import s from './AboutMe.css'
+// import withStyles from 'isomorphic-style-loader/lib/withStyles'
 class AboutMe extends Component {
     constructor (props) {
         super(props)
     }
-
     render () {
         return (
             <div className='aboutMeContainer'>

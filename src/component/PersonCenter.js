@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import './PersonCenter.less'
-
+import './PersonCenter.scss'
+import avatar from '../img/avatar.jpeg'
+console.log('avatar:', avatar)
 class PersonCenter extends Component {
     constructor (props) {
-        super(props)
+      super(props)
     }
 
     render () {
         return (
             <div className='personContainer'>
-                <div className='logoContainer'>
-                </div>
-                <div>会思想的猪</div>
+                <img className='logoContainer' src={avatar}/>
             </div>
         )
     }
