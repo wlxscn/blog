@@ -13,10 +13,13 @@
 // require.extensions['.svg'] = function() {
 //   return null;
 // }
+// require.extensions['.jpeg'] = function() {
+//     return null;
+//   }
 require( "babel-register")
-require('css-modules-require-hook/preset')
-const assethook = require('asset-require-hook')
-assethook({
-    extensions: ['png', 'jpeg']
-});
+// require('css-modules-require-hook/preset')
+// const assethook = require('asset-require-hook')
+// assethook({
+//     extensions: ['png', 'jpeg']
+// });
 require( "./src/server" )

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {NavLink } from "react-router-dom";
 import styles from './Nav.scss'
-
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+@withStyles(styles)
 class Nav extends Component {
     navTabs = [
         {name: '主页', path: '/'},

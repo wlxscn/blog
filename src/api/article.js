@@ -1,4 +1,5 @@
 import Axios from 'axios'
+Axios.defaults.baseURL = 'http://localhost:3005'
 
 export default {
   createArticle (article) {

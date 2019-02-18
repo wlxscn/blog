@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactMarkdown from 'react-markdown'
-import './Markdown.less'
+import './Markdown.scss'
 import SimpleMDE from 'simplemde'
 import 'simplemde/dist/simplemde.min.css'
 import {marked} from '../utils'

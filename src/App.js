@@ -1,38 +1,17 @@
-import React, { Component } from 'react';
-import './App.scss';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import AboutMe from './component/AboutMe'
-// import Markdown from './component/Markdown'
-import Nav from './component/Nav'
-import PersonCenter from './component/PersonCenter'
-// import Articles from './component/Articles'
-// import ArticleEdit from './component/ArticleEdit'
-// import Detail from './component/Detail'
-// import { TransitionGroup, CSSTransition } from "react-transition-group"
+import React from 'react';
 
-class App extends Component {
+import AppProvider from './AppProvider';
+
+import AppContent from './AppContent';
+const CssContext = { insertCss: () => '' };
+class App extends React.PureComponent {
   render() {
-    const {location} = this.props
     return (
-      <div className="App">
-
-        <header className="App-header">
-          <PersonCenter/>
-          <Nav/> 
-        </header>
-        <div className='App-content'>
-            <Switch location={location}>
-              {/* <Route path='/' exact={true} component={Articles}/> 
-              <Route path='/edit' exact={true} component={ArticleEdit}/>  */}
-              <Route path='/aboutMe' component={AboutMe}/> 
-              {/* <Route path='/articles' component={Articles}/> 
-              <Route path='/detail/:id' component={Detail}/>  */}
-            </Switch>   
-        </div>
-
-      </div>
-    );
+      <AppProvider context={CssContext}>
+        <AppContent />
+      </AppProvider>
+    )
   }
 }
 
-export default App;
+export default App

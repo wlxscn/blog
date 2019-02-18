@@ -7,21 +7,21 @@ import React, { Component } from 'react'
 */
 class List extends Component {
 
-    constructor (props) {
-        super(props)
-    }
+  constructor(props) {
+    super(props)
+  }
 
-    render () {
-        return (
-            <div className='list-wrap'>
-                {
-                  this.props.data.map((item, index) => {
-                    return this.props.renderItem(item, index)
-                  })
-                }
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className='list-wrap'>
+        {
+          this.props.data.map((item, index) => {
+            return this.props.renderItem(item, index)
+          })
+        }
+      </div>
+    )
+  }
 }
 
 export default List
